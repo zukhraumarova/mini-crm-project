@@ -39,11 +39,26 @@ const jobRoutes = require('./routes/job.route');
 
 const compression = require('compression');
 
+const sanitize = require('./middlewares/sanitize.middleware');
+
+const cookieParser = require('cookie-parser');
+
+const chatRoutes = require('./routes/chat.route');
+
 const cors = require('cors');
 
 const app = express();
 
-app.use(express.json());
+app.use(cookieParser());
+
+app.use(express.json({
+
+    limit: '1mb'
+
+}));
+
+app.use(sanitize);
+
 app.use(compression());
 
 app.use(
@@ -108,6 +123,9 @@ app.use('/dashboard', dashboardRoutes);
 app.use('/reports', reportRoutes);
 
 app.use('/jobs', jobRoutes);
+
+app.use('/chat', chatRoutes);
+
 
 
 module.exports = app;

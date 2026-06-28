@@ -13,4 +13,12 @@ router.get(
 
 );
 
+router.get(
+
+    '/pipeline-view',
+
+    reportController.getPipelineView
+
+);
+
 module.exports = router;

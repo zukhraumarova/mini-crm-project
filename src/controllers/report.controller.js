@@ -28,8 +28,19 @@ const getPipeline = async (
 
 };
 
+const getPipelineView = async (req, res) => {
+
+    const data =
+
+        await reportService.getPipelineView();
+
+    res.json(data);
+
+};
+
 module.exports={
 
-    getPipeline
+    getPipeline,
+    getPipelineView
 
 };

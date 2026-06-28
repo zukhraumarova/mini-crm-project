@@ -11,8 +11,15 @@ async(filters)=>{
 
 };
 
+const getPipelineView = async () => {
+
+    return await reportRepository.getPipelineView();
+
+};
+
 module.exports={
 
-    getPipeline
+    getPipeline,
+    getPipelineView
 
 };

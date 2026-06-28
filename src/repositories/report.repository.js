@@ -115,8 +115,33 @@ ORDER BY stage
 
 };
 
+const getPipelineView = async () => {
+
+    const result = await pool.query(`
+
+        SELECT *
+
+        FROM vw_pipeline_report
+
+        ORDER BY owner_id, stage
+
+    `);
+
+    return result.rows;
+
+};
+
+module.exports = {
+
+    ...
+
+    getPipelineView
+
+};
+
 module.exports={
 
-    getPipeline
+    getPipeline,
+    getPipelineView
 
 };
