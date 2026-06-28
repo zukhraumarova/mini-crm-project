@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CRM</title>
+</head>
+<body>
+
+<h1>CRM Frontend</h1>
+
+<button id="loadCompanies">Load Companies</button>
+
+<ul id="list"></ul>
+
+<h2>Create company</h2>
+
+
+<form id="companyForm">
+
+<input id="name" placeholder="Company name">
+
+<br>
+
+<input id="website" placeholder="Website">
+
+<br>
+
+<input id="industry" placeholder="Industry">
+
+
+<br>
+
+<button>
+Create
+</button>
+
+</form>
+
+<hr>
+
+<h2>Deals</h2>
+
+<button id="loadDeals">
+    Load Deals
+</button>
+
+<ul id="dealList"></ul>
+
+<button id="loadMoreDeals">
+    Load More
+</button>
+
+<h2>Register</h2>
+
+<input
+    id="registerName"
+    placeholder="Name"
+/>
+
+<input
+    id="registerEmail"
+    placeholder="Email"
+/>
+
+<input
+    id="registerPassword"
+    type="password"
+    placeholder="Password"
+/>
+
+<select id="registerRole">
+
+    <option value="admin">
+        Admin
+    </option>
+
+    <option value="manager">
+        Manager
+    </option>
+
+</select>
+
+<button id="registerBtn">
+    Register
+</button>
+
+<div id="registerResult"></div>
+
+<hr>
+
+<h2>Login</h2>
+
+<form id="loginForm">
+
+    <input
+        id="email"
+        placeholder="Email"
+    >
+
+    <input
+        id="password"
+        type="password"
+        placeholder="Password"
+    >
+
+    <button>
+        Login
+    </button>
+
+</form>
+
+<h2>Upload file</h2>
+
+<form id="uploadForm">
+
+    <input
+        type="file"
+        id="file"
+        name="file"
+    >
+
+    <button type="submit">
+        Upload
+    </button>
+
+</form>
+
+<p id="progress"></p>
+
+<p id="result"></p>
+
+<div id="result"></div>
+
+<hr>
+
+<h2>Live notifications</h2>
+
+<ul id="notifications"></ul>
+
+<h3>
+
+Connection:
+
+<span id="connectionStatus">
+
+Disconnected
+
+</span>
+
+</h3>
+
+
+<div id="error"></div>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+
+<!-- твой API слой -->
+<script src="./js/api.js"></script>
+
+<!-- логика страницы -->
+<script src="./js/company.js"></script>
+
+<script src="./js/deal.js"></script>
+
+<script src="./js/user.js"></script>
+
+<script src="./js/auth.js"></script>
+
+<script src="./js/file.js"></script>
+
+<script src="./js/socket.js"></script>
+
+</body>
+</html>

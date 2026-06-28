@@ -1,0 +1,35 @@
+const reportService =
+require('../services/report.service');
+
+const getPipeline = async (
+
+    req,
+    res,
+    next
+
+)=>{
+
+    try{
+
+        const result =
+        await reportService.getPipeline(
+            req.query
+        );
+
+        res.json(result);
+
+    }
+
+    catch(err){
+
+        next(err);
+
+    }
+
+};
+
+module.exports={
+
+    getPipeline
+
+};

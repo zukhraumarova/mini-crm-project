@@ -1,0 +1,6 @@
+{
+  "development": {
+    "url": "postgres://postgres:123@localhost:5432/crm",
+    "dir": "migrations"
+  }
+}
