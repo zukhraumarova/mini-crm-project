@@ -1,4 +1,3 @@
-console.log("APP.JS LOADED");
 const express = require('express');
 const path = require('path');
 
@@ -49,13 +48,15 @@ const cors = require('cors');
 
 const app = express();
 
+app.use(morgan('dev'));
+
+app.use(helmet());
+
+app.use(limiter);
+
 app.use(cookieParser());
 
-app.use(express.json({
-
-    limit: '1mb'
-
-}));
+app.use(express.json({limit: '1mb'}));
 
 app.use(sanitize);
 
@@ -67,27 +68,13 @@ app.use(
     )
 );
 
-app.use((req,res,next)=>{
-    console.log("REQUEST:", req.method, req.url);
-    next();
-});
-
-
 app.use('/companies', companyRoutes);
 app.use('/contacts', contactRoutes);
 app.use('/auth', authRoutes);
 
-app.use(errorMiddleware);
-
-app.use(morgan('dev'));
-
-app.use(helmet());
-
-app.use(limiter);
-
 app.use(
     cors({
-        origin: ['http://localhost:5500'],
+        origin: process.env.FRONTEND_URL || "http://localhost:3000",
         credentials: true
     })
 );
@@ -99,17 +86,16 @@ app.use(
 );
 
 app.use(
-'/files',
-fileRoutes
+    '/files',
+    fileRoutes
 );
 
 app.use(
-'/uploads',
+    '/uploads',
 
-express.static(
-'uploads'
-)
-
+    express.static(
+    'uploads'
+    )
 );
 
 app.use('/users', userRoutes);
@@ -126,6 +112,7 @@ app.use('/jobs', jobRoutes);
 
 app.use('/chat', chatRoutes);
 
+app.use(errorMiddleware);
 
 
 module.exports = app;

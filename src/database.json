@@ -1,6 +1,6 @@
 {
   "development": {
-    "url": "postgres://postgres:123@localhost:5432/crm",
+    "url": "postgres://postgres:postgres@postgres:5432/mini_crm",
     "dir": "migrations"
   }
 }

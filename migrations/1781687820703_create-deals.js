@@ -25,7 +25,7 @@ exports.up = (pgm) => {
         },
 
         amount: {
-            type: 'varchar(50)',
+            type: 'integer',
             notNull: true
         },
 

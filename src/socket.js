@@ -10,7 +10,7 @@ const init = (server) => {
 
     cors: {
 
-        origin: "http://localhost:3000",
+        origin: process.env.FRONTEND_URL || "http://localhost:3000",
 
         methods: ["GET", "POST"]
 
@@ -31,9 +31,6 @@ const init = (server) => {
     io.use(auth);
 
     notifications(io);
-
-
-    console.log('Socket.IO initialized');
 
     return io;
 
