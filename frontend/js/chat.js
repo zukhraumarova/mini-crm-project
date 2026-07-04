@@ -2,17 +2,21 @@ $('#sendChat').click(function () {
 
     const message = $('#chatInput').val();
 
+    $('#chatBox').append(
+    `<p><b>Вы:</b> ${message}</p>`
+    );
+
     if (!message) return;
 
+    const streamId = `stream_${Date.now()}`;
+
     $('#chatBox').append(
-        `<p><b>Вы:</b> ${message}</p>`
+        `<p><b>AI:</b> <span id="${streamId}"></span></p>`
     );
+
+    const stream = $('#' + streamId);
 
     $('#chatInput').val('');
-
-    $('#chatBox').append(
-        `<p><b>AI:</b> <span id="stream"></span></p>`
-    );
 
     const eventSource = new EventSource(
 
@@ -20,16 +24,12 @@ $('#sendChat').click(function () {
 
     );
 
-    eventSource.onmessage = function (event) {
+    eventSource.onmessage = function(event) {
+    stream.append(event.data);
 
-        $('#stream').append(event.data);
-
-        $('#chatBox').scrollTop(
-
-            $('#chatBox')[0].scrollHeight
-
-        );
-
+    $('#chatBox').scrollTop(
+        $('#chatBox')[0].scrollHeight
+    );
     };
 
     eventSource.addEventListener('end', function () {

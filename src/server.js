@@ -12,9 +12,9 @@ const socket = require('./socket');
 
 socket.init(server);
 
-require('./workers/email.worker');
+require('./workers/email_worker');
 
-require('./cron/cleanup.cron');
+require('./cron/cleanup_cron');
 
 server.listen(PORT, () => {
 
